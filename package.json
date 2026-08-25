@@ -1,0 +1,53 @@
+{
+  "name": "@moreflow/tracking",
+  "version": "0.1.1",
+  "description": "Browser-safe acquisition tracking helpers for Moreflow public embeds.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/moreflow-io/tracking.git"
+  },
+  "homepage": "https://github.com/moreflow-io/tracking#readme",
+  "bugs": {
+    "url": "https://github.com/moreflow-io/tracking/issues"
+  },
+  "keywords": [
+    "moreflow",
+    "tracking",
+    "attribution",
+    "browser"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "rm -rf dist && esbuild src/index.ts --bundle --format=esm --minify --outfile=dist/index.js && tsc -p tsconfig.build.json",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "prepublishOnly": "bun run test && bun run build"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.12",
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.4"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
